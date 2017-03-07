@@ -1,0 +1,31 @@
+<md-list>
+    <md-list-item class="badge glass action_btn col-md-6">
+        <i class="material-icons">contact_mail</i>
+        <span class="hoffset1">CONTACT DATA</span>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span>  <i class="material-icons">contact_mail</i> </span>
+            <span> {{(doctorStore.selected | async)?.email}} </span>
+        </p>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span>  <i class="material-icons">home</i> </span>
+            <span> {{(doctorStore.selected | async)?.address}}, </span>
+            <span> {{(doctorStore.selected | async)?.place}} </span>
+        </p>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span><i class="material-icons">contact_phone</i> </span>
+            <span> {{(doctorStore.selected | async)?.phone}} </span>
+        </p>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span>  <i class="material-icons">smartphone</i> </span>
+            <span> {{(doctorStore.selected | async)?.mobilephone}} </span>
+        </p>
+    </md-list-item>
+</md-list>

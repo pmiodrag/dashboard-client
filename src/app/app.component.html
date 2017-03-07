@@ -1,3 +1,28 @@
-<h1>
-  {{title}}
-</h1>
+<div id="wrapper" class="gradient_blue">
+    <div  *ngIf="!authService.loggedIn()">
+        <div class="intro-splash splash messaging" layout layout-align="center center"   *ngIf="!authService.loggedIn()">
+            <div class="container center-all-container" >
+                <h1 class="white light splash-title">
+                    Smiletime Dashboard Application
+                </h1>
+                <p class="white light splash-subtitle">
+                    Please log in to enter dashboard.
+                </p>
+                <div id="login-form">
+                    <button class="bright-blue-hover btn-white" (click)="authService.login()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  Header Bar  -->               
+    <div class="row header"  *ngIf="authService.loggedIn()">
+        <auth-component></auth-component>       
+    </div>
+    <!--  End Header Bar -->
+    <router-outlet></router-outlet></div>
+<footer class="navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <p class="text-muted"> Created by <a href="http://twitter.com/DanWahlin" target="_blank">Twinsoft</a></p>
+    </div>
+</footer>
+

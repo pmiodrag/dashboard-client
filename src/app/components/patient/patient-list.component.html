@@ -1,0 +1,32 @@
+<patient-header></patient-header>
+<div class="col-md-12 voffset8">
+     <div class="col-md-11">
+        <md-grid-list cols="6" rowHeight="200px" gutterSize="20px" >
+            <md-grid-tile  class="md-elevation-z8"  *ngFor="let patient of patientStore.patients | async "  colspan="1" rowspan="1">
+                <div id="item" class="combo_blue_bg glass" >
+                    <div class="contact glass" (click)="goToPatientDetails(patient.id)">{{ patient.firstname | capitalize }} {{ patient.lastname | capitalize }}</div>                     
+                    <md-card-avatar>                      
+                        <a *ngIf="!patient.photo" routerLink="{{patient.id}}" class="profile-spot small no-border">
+                            <img *ngIf="patient.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />
+                            <img *ngIf="patient.gender == 'M'"  src="assets/images/svg/human-male.svg" class="img" />
+                        </a>
+                        <a *ngIf="patient.photo"  routerLink="{{patient.id}}" class="profile-spot small no-border">
+                            <img *ngIf="patient.gender == 'F'"  src="uploads/{{patient.photo}}"  onError="this.src='assets/images/svg/human-female.svg'" class="img" />
+                            <img *ngIf="patient.gender == 'M'"  src="uploads/{{patient.photo}}"  onError="this.src='assets/images/svg/human-male.svg'" class="img" />
+                        </a>
+                    </md-card-avatar>
+                </div>
+                <md-grid-tile-footer class="glass">
+                    <div class="frame white_bg mini">                        
+                        <a  (click)="removeAccount(patient)">
+                            <md-icon class="combo_blue line-height-small" svgIcon="account-remove" (click)="removeAccount(patient)"></md-icon> 
+                        </a>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>           
+        </md-grid-list>
+    </div>
+    <div [hidden]="patientStore.patients._subscribe.length != 0">
+        No Records Found 
+    </div>
+</div>

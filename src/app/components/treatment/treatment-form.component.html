@@ -1,0 +1,61 @@
+<div class="col-md-12">
+    <md-toolbar class="col-md-11 combo_blue_bg glass"> 
+        <div class="btn-block col-md-6">
+            <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Treatments</span></div>
+            <div class="frame frame_active small">                        
+                <a  [routerLink]="['../']">
+                    <i class="material-icons">assignment</i>
+                </a>
+            </div>
+            <div class="frame frame_active small hoffset2">   
+                <a [routerLink]="['../']" >
+                    <i class="material-icons" [ngClass]="iconClass">arrow_back</i>                          
+                </a>
+            </div>
+        </div>
+    </md-toolbar>
+    <div class="col-md-12 voffset2"> 
+        <form [formGroup]="treatmentForm" novalidate> 
+            <md-list>
+                 <md-list-item class="col-md-10 action_btn voffset8">
+                    <input formControlName="doctor"
+                           [typeahead]="doctorStore.doctors | async" 
+                           [typeaheadOptionField]="'lastname'"  
+                            (typeaheadOnSelect)="typeaheadOnDoctorSelect($event)"
+                           typeaheadOptionsLimit="27"
+                           typeaheadMinLength="0"
+                           placeholder="Doctors"
+                           class="form-control blue">
+                           <input formControlName="diagnose"
+                           [typeahead]="diagnoseStore.diagnoses | async" 
+                           [typeaheadOptionField]="'name'"  
+                           (typeaheadOnSelect)="typeaheadOnDiagnoseSelect($event)"
+                           typeaheadOptionsLimit="27"
+                           typeaheadMinLength="0"
+                           placeholder="Diagnoses"
+                           class="form-control blue">
+                </md-list-item>
+<!--                <md-list-item class="col-md-6 action_btn voffset8">
+                    
+                </md-list-item>-->
+                <md-list-item class="col-md-12 action_btn voffset8">
+
+                    <div md-line class="col-md-12 voffset8">
+                        <textarea class="col-md-6" md-input ngDefaultControl formControlName="therapy" placeholder="Theraphy"  columns="3" md-maxlength="1500" rows="5"></textarea> 
+                    </div>
+                    <div md-line class="col-md-12 voffset8">
+                        <md-input class="col-md-6" ngDefaultControl formControlName="price" placeholder="Price"></md-input>
+                    </div>
+
+                </md-list-item>
+                 
+                <md-list-item class="col-md-12 action_btn voffset8">      
+                    <div class="col-sm-offset-3 col-sm-12">
+                        <button md-raised-button class="md-accent" type="submit" (click)="onSubmit()" [disabled]="!treatmentForm.valid">add</button>
+                    </div>          
+                </md-list-item>
+            </md-list>
+
+        </form>
+    </div>
+</div>

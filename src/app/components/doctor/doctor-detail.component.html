@@ -1,0 +1,54 @@
+<div class="col-md-12">
+     <md-toolbar class="col-md-12 glass combo_blue_bg voffset6">
+          <div class="btn-block col-md-6">
+            <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Doctor</span></div>
+            <div class="frame frame_active small">                        
+                <a  [routerLink]="['/doctors']">
+                    <i class="material-icons line-height-small">face</i>
+                </a>
+            </div>   
+            <div class="frame frame_active mini hoffset8">                        
+                <a  (click)="navigateTo('personal')" >
+                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Personal}">person</i>          
+                </a>
+            </div> 
+            <div class="frame frame_active mini hoffset2">                        
+                <a  (click)="navigateTo('gallery')" >
+                    <i class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Gallery}">add_a_photo</i>             
+                </a>
+            </div>    
+            <div class="frame frame_active mini hoffset2">                        
+                <a  (click)="navigateTo('contact')" >
+                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Contact}">contact_mail</i>            
+                </a>
+            </div>
+            <div class="frame frame_active mini hoffset2">                        
+                <a  (click)="navigateTo('education')" >
+                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Education}">school</i>                 
+                </a>
+            </div>
+            <div class="frame frame_active mini hoffset2">                        
+                <a  (click)="navigateTo('treatments')" >
+                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Treatments}">assignment</i>                     
+                </a>
+            </div>
+        </div>
+    </md-toolbar>
+    <div id="card" class="combo_blue_bg voffset8"> 
+        <div class="contact glass" *ngIf="doctorStore.selected | async">{{ (doctorStore.selected | async)?.firstname  }} {{ (doctorStore.selected | async)?.lastname  }}</div>
+        <md-card-avatar>   
+            <a *ngIf="!(doctorStore.selected | async)?.photo"  class="profile-spot middle no-border">
+                <img *ngIf="(doctorStore.selected | async)?.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />
+                <img *ngIf="(doctorStore.selected | async)?.gender == 'M'"  src="assets/images/svg/human-male.svg" class="img" />
+            </a>
+            <a *ngIf="(doctorStore.selected | async)?.photo" class="profile-spot small no-border">
+                <img  src="uploads/{{(doctorStore.selected | async)?.photo}}"  class="img" />
+            </a>
+        </md-card-avatar>
+        <md-card-content class="col-md-12">
+            <router-outlet></router-outlet>                    
+        </md-card-content>
+
+    </div> 
+
+</div>

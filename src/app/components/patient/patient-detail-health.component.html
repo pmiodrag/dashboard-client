@@ -1,0 +1,18 @@
+<md-list>
+    <md-list-item class="badge glass action_btn col-md-6">
+        <i class="material-icons" >description</i>
+        <span class="hoffset1">HEALTH INFO</span>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span><i class="material-icons">note</i> </span>
+            <span> {{(patientStore.selected | async)?.allergies}} </span>
+        </p>
+    </md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span><i class="material-icons">note</i> </span>
+            <span> {{(patientStore.selected | async)?.notes}} </span>
+        </p>
+    </md-list-item>
+</md-list>

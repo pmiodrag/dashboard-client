@@ -1,0 +1,11 @@
+<md-list>
+    <md-list-item class="badge glass action_btn col-md-6">EDUCATION INFO</md-list-item>
+    <md-list-item class="col-md-6 action_btn">
+        <p md-line>
+            <span><i class="material-icons">school</i> </span>
+            <span> {{(doctorStore.selected | async)?.title}} </span>
+            <span> {{(doctorStore.selected | async)?.degreeyear}} </span>
+            <span> {{(doctorStore.selected | async)?.degreeplace}} </span>
+        </p>
+    </md-list-item>             
+</md-list>

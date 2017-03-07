@@ -1,0 +1,24 @@
+<div class="voffset4">
+    <div class="col-md-12">
+        <div class="navbar">
+            <filter-textbox class="navbar-right" (changed)="filterChanged($event)"></filter-textbox>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <md-toolbar class="col-md-12 combo_blue_bg glass"> 
+        <div class="btn-block col-md-6">
+            <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Patients</span></div>
+            <div class="frame frame_active small">                        
+                <a  [routerLink]="['/patients']">
+                    <i class="material-icons line-height-small">people</i>
+                </a>
+            </div>
+            <div class="frame hoffset3 small">                        
+                <a  [routerLink]="['/patients/form']">
+                    <i class="material-icons line-height-small">person_add</i>
+                </a>
+            </div>
+        </div>
+    </md-toolbar>
+</div>

@@ -1,0 +1,46 @@
+<md-toolbar class="col-md-12 combo_blue_bg glass">  
+    <div class="col-md-12 btn-block">
+        <!--        <div class="col-md-4"><span class="logo col-md-6 glass white">Smiletime Dashboard</span></div>-->
+        <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Smiletime Dashboard</span></div>
+        <div class="col-md-10">
+            <div class="frame frame_active hoffset2 small">                        
+                <a  [routerLink]="['/dashboard']">
+                    <i class="material-icons line-height-small">dashboard</i>
+                </a>
+            </div>
+            <div class="frame frame_active small hoffset2">                        
+                <a  [routerLink]="['/patients']">
+                    <i class="material-icons line-height-small">people</i>
+                </a>
+            </div> 
+            <div class="frame frame_active small hoffset2">                        
+                <a  [routerLink]="['/doctors']">
+                    <i class="material-icons line-height-small">face</i>
+                </a>
+            </div>
+            <div class="frame frame_active small hoffset2">                        
+                <a  [routerLink]="['/diagnoses']">
+                    <i class="material-icons line-height-small">note</i>
+                </a>
+            </div><!--
+            <div class="frame frame_active small hoffset2">                        
+                <a  [routerLink]="['/documents']">
+                    <i class="material-icons">library_books</i>
+                </a>
+            </div>
+            <div class="frame frame_active small hoffset2">                        
+                <a  [routerLink]="['/agenda']">
+                    <i class="material-icons">view_agenda</i>
+                </a>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="user"> 
+        <a  class="profile-spot small no-border">
+            <img [src]="authService.getPicture()"  class="img" /> 
+        </a>
+    </div>
+    <button md-raised-button class="combo_dark_blue"  [ngClass]="iconClassBg"  *ngIf="!authService.loggedIn()" (click)="authService.login()" aria-label="Login">Login</button>
+    <button md-raised-button class="combo_dark_blue"  [ngClass]="iconClassBg"  *ngIf="authService.loggedIn()" (click)="authService.logout()" aria-label="Logout">Logout</button> 
+</md-toolbar>

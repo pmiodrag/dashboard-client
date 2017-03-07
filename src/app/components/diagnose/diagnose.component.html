@@ -1,0 +1,51 @@
+<div class="row voffset4" *ngIf="authService.loggedIn()">
+    <div class="col-md-12">
+        <div class="voffset4">
+            <div class="col-md-12">
+                <div class="navbar">
+                    <filter-textbox class="navbar-right" (changed)="filterChanged($event)"></filter-textbox>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <md-toolbar class="col-md-12 combo_blue_bg glass"> 
+                <div class="btn-block col-md-6">
+                    <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Diagnoses</span></div>
+                    <div class="frame frame_active small">                        
+                        <a  [routerLink]="['/diagnoses']">
+                            <i class="material-icons line-height-small">note</i>
+                        </a>
+                    </div>
+                </div>
+            </md-toolbar>
+        </div>
+            <div class="col-md-11 voffset4">
+            <md-grid-list cols="6" rowHeight="200px" gutterSize="20px" >
+                <md-grid-tile  class="md-elevation-z8"  colspan="1" rowspan="1">
+                <div id="item" class="combo_blue_bg glass" >
+                      <md-input id="name" class="hoffset2" placeholder="Add diagnose" [(ngModel)]="name"></md-input>
+                </div>
+                <md-grid-tile-footer class="glass">
+                    <div class="frame frame_active mini">     
+                        <a  (click)="addDiagnose()" >
+                            <i class="material-icons combo_blue line-height-mini">plus_one</i>
+                        </a>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>  
+            <md-grid-tile  class="md-elevation-z8"  *ngFor="let diagnose of diagnoseStore.diagnoses | async "  colspan="1" rowspan="1">
+                <div id="item" class="combo_blue_bg glass" >
+                      <span class="contact white_active"> {{diagnose.name}}</span>
+                </div>
+                <md-grid-tile-footer class="glass">
+                    <div class="frame frame_active mini">     
+                        <a  (click)="deleteDiagnose(diagnose)" >
+                            <i class="material-icons combo_blue line-height-mini">delete</i>
+                        </a>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile>           
+        </md-grid-list>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,34 @@
+<doctor-header></doctor-header>
+<div class="col-md-12 voffset8">
+    <div class="col-md-11">
+        <md-grid-list cols="6" rowHeight="200px" gutterSize="20px" >
+            <md-grid-tile  class="md-elevation-z8"  *ngFor="let doctor of doctorStore.doctors | async "  colspan="1" rowspan="1">
+                           <div id="item" class="combo_blue_bg glass" >
+                    <div class="contact glass" (click)="goToDoctorDetails(doctor.id)">{{ doctor.firstname | capitalize }} {{ doctor.lastname | capitalize }}</div>
+
+                    <md-card-avatar>                      
+                        <a *ngIf="!doctor.photo" routerLink="{{doctor.id}}" class="profile-spot small no-border">
+                            <img *ngIf="doctor.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />
+                            <img *ngIf="doctor.gender == 'M'"  src="assets/images/svg/human-male.svg" class="img" />
+                        </a>
+                        <a *ngIf="doctor.photo"  routerLink="{{doctor.id}}" class="profile-spot small no-border">
+                            <img *ngIf="doctor.gender == 'F'"  src="uploads/{{doctor.photo}}"  onError="this.src='assets/images/svg/human-female.svg'" class="img" />
+                            <img *ngIf="doctor.gender == 'M'"  src="uploads/{{doctor.photo}}"  onError="this.src='assets/images/svg/human-male.svg'" class="img" />
+                        </a>
+                    </md-card-avatar>
+                </div>
+                <md-grid-tile-footer class="glass">
+                    <div class="frame white_bg xs">                        
+                        <a  (click)="removeAccount(doctor)">
+                            <md-icon class="combo_blue" svgIcon="account-remove" (click)="removeAccount(doctor)"></md-icon> 
+                        </a>
+                    </div>
+                </md-grid-tile-footer>
+            </md-grid-tile> 
+
+        </md-grid-list>
+    </div>
+    <div [hidden]="doctorStore.doctors._subscribe.length != 0">
+        No Records Found 
+    </div>
+</div>

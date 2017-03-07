@@ -1,0 +1,67 @@
+<div class="col-md-12">
+    <!--    <div class="col-md-12">-->
+    <md-toolbar class="col-md-11 combo_blue_bg glass"> 
+        <div class="btn-block col-md-6">
+            <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Treatments</span></div>
+            <div class="frame frame_active small">                        
+                <a  [routerLink]="['treatments']">
+                    <i class="material-icons line-height-small">assignment</i>
+                </a>
+            </div>
+            <div class="frame frame_active small hoffset2">                        
+                <a [routerLink]="['form']" >
+                    <i class="material-icons line-height-small">plus_one</i>                           
+                </a>  
+            </div>
+        </div>
+    </md-toolbar>
+    <div class="col-md-11">
+        <md-grid-list cols="3" rowHeight="350px" gutterSize="20px" class="voffset4">
+            <md-grid-tile  class="md-elevation-z8"  *ngFor="let treatment of treatmentStore.treatments | async "  colspan="1" rowspan="1">
+                <div id="item" class="dark_blue_bg glass" >
+                    <md-list>
+                        <md-list-item> 
+                            <p md-line>
+                                <span  class="badge glass"> Therapy </span>
+                            </p>
+                            <p md-line>
+                                <span> {{treatment.therapy}}</span>
+                            </p>
+                        </md-list-item>
+                        <md-list-item> 
+                            <p md-line>
+                                <span  class="badge glass"> Price </span>
+                            </p>
+                            <p md-line>
+                                <span> {{treatment.price}}</span>
+                            </p>
+                        </md-list-item>
+                        <md-list-item> 
+                            <p md-line>
+                                <span  class="badge glass"> Diagnose Id </span>
+                            </p>
+                            <p md-line>
+                                <span> {{treatment.diagnoseid}}</span>
+                            </p>
+                        </md-list-item>
+                        <md-list-item> 
+                            <p md-line>
+                                <span  class="badge glass"> Doctor Id </span>
+                            </p>
+                            <p md-line>
+                                <span> {{treatment.doctorid}}</span>
+                            </p>
+                        </md-list-item>
+                    </md-list>
+                    <md-grid-tile-footer class="glass">
+                        <div class="frame white_bg xs">                        
+                            <a  (click)="deleteTreatment(treatment)">
+                                <md-icon class="combo_blue" svgIcon="account-remove"></md-icon> 
+                            </a>
+                        </div>
+                    </md-grid-tile-footer>
+                </div>
+            </md-grid-tile>           
+        </md-grid-list>              
+    </div>
+</div>
