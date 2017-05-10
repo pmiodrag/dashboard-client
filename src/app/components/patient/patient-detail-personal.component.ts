@@ -4,7 +4,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
     selector: 'patient-detail-personal',
     templateUrl: 'patient-detail-personal.component.html' ,
-     animations: [
+    animations: [
         trigger('flyInOut', [
             state('in', style({ opacity: 1, transform: 'translateX(0)' })),
             transition('void => *', [
@@ -43,7 +43,7 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class PatientDetailPersonalComponent {
-    constructor(private patientStore: PatientStore) {
+    constructor(public patientStore: PatientStore) {
         this.patientStore.setPatientFormPage(PatientFormPage.Personal);
     }
 

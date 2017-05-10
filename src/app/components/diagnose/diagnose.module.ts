@@ -7,7 +7,7 @@ import { DiagnoseStore } from './DiagnoseStore';
 import { DiagnoseBackendService} from './diagnose.service';
 import { MaterialModule } from '@angular/material';
 @NgModule({
-    imports: [SharedModule.forRoot(), MaterialModule.forRoot(), DiagnoseRoutingModule],
+    imports: [SharedModule.forRoot(), MaterialModule, DiagnoseRoutingModule],
     declarations: [
         DiagnoseComponent,
         FilterTextboxComponent

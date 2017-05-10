@@ -12,9 +12,10 @@ import { DiagnoseBackendService } from '../diagnose/diagnose.service';
 import { DoctorStore } from '../doctor/DoctorStore';
 import { DoctorBackendService } from '../doctor/doctor.service';
 import { MaterialModule } from '@angular/material';
-import { TypeaheadModule } from 'ng2-bootstrap/typeahead';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
 @NgModule({
-    imports: [SharedModule.forRoot(), MaterialModule.forRoot(), TypeaheadModule.forRoot(), TreatmentRoutingModule],
+    imports: [SharedModule.forRoot(), MaterialModule, TypeaheadModule.forRoot(), TreatmentRoutingModule],
     declarations: [
         TreatmentComponent,        
         TreatmentListComponent,

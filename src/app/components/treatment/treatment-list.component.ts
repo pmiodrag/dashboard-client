@@ -23,8 +23,11 @@ export class TreatmentListComponent {
     doctorID: number;
     patientID: number;
     private _treatments: Rx.BehaviorSubject<List<Treatment>> = new Rx.BehaviorSubject(List([]));
-    constructor(private notificationService: NotificationService, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private route: ActivatedRoute, private treatmentService: TreatmentBackendService, private treatmentStore: TreatmentStore) {
+    constructor(private notificationService: NotificationService, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private route: ActivatedRoute, public treatmentService: TreatmentBackendService, public treatmentStore: TreatmentStore) {
         mdIconRegistry.addSvgIcon('account-remove', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-remove.svg'));
+        mdIconRegistry.addSvgIcon('account-box-outline', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-box-outline.svg'));
+        mdIconRegistry.addSvgIcon('account-star', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-star.svg'));
+        mdIconRegistry.addSvgIcon('square-inc-cash', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/square-inc-cash.svg'));
     }   
     
     

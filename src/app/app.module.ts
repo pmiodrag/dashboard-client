@@ -8,19 +8,21 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './components/auth/auth.module';
 import { StoreModule } from './components/state/store.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule }    from '@angular/http';
 @NgModule({
   imports: [
-    BrowserModule,
-    
+    BrowserModule, 
+    HttpModule,
+    BrowserAnimationsModule,   
     CoreModule.forRoot(),
     StoreModule.forRoot(),
-    MaterialModule.forRoot(),
+    MaterialModule,
     SharedModule.forRoot(),
     AuthModule.forRoot(),
     AppRoutingModule,
     /* Eagerly loaded module, others are loaded lazy */
-    DashboardModule
-  
+    DashboardModule  
   ],
   declarations: [
     AppComponent 

@@ -17,7 +17,7 @@ import { MaterialModule } from '@angular/material';
 import {CalendarModule} from 'primeng/primeng';
 import { Md2Module }  from 'md2';
 @NgModule({
-    imports: [ SharedModule.forRoot(), MaterialModule.forRoot(), DoctorRoutingModule, CalendarModule, Md2Module.forRoot() ],
+    imports: [ SharedModule.forRoot(), MaterialModule, DoctorRoutingModule, CalendarModule, Md2Module.forRoot() ],
     declarations: [
         DoctorComponent,
         DoctorHeaderComponent,

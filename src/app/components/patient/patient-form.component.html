@@ -14,7 +14,7 @@
             </div>
             <div class="frame frame_active mini hoffset8">                        
                 <a  (click)="setPatientFormPage(patientFormPage.Personal)" >
-                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Personal}">person</i>          
+                    <md-icon class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Personal}" svgIcon="account-card-details"></md-icon>                    
                 </a>
             </div> 
             <div class="frame frame_active mini hoffset2">                        
@@ -29,114 +29,125 @@
             </div>
             <div class="frame frame_active mini hoffset2">                        
                 <a  (click)="setPatientFormPage(patientFormPage.HealthInfo)" >
-                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.HealthInfo}">description</i>                 
+                    <md-icon class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.HealthInfo}" svgIcon="file-account"></md-icon>
                 </a>
             </div>
             <div class="frame frame_active mini hoffset2">                        
                 <a  (click)="setPatientFormPage(patientFormPage.Summary)" >
-                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Summary}">note</i>                 
+                    <md-icon class="material-icons line-height-mini" svgIcon="file-check" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Summary}"></md-icon>
                 </a>
             </div>
             <div class="frame frame_active mini hoffset2">   
                 <a [routerLink]="['/patients']" >
-                        <i class="material-icons line-height-mini" [ngClass]="iconClass">arrow_back</i>                          
+                    <i class="material-icons line-height-mini" [ngClass]="iconClass">arrow_back</i>                          
                 </a>
-            </div>
+            </div>            
         </div>
     </md-toolbar>
-    <div id="card" class="combo_blue_bg">
+    <div id="card" class="white_active">
         <md-card-content>
-            <form [formGroup]="patientForm" novalidate> 
-                <md-list  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Personal"  formGroupName="personal" >  
-                    <md-list-item class="badge glass white action_btn col-md-6">
-                        <i class="material-icons line-height-small">person</i>
-                        <span class="hoffset1">PERSONAL DATA</span>                    
-                    </md-list-item>
-                    <md-list-item class="col-md-12 action_btn voffset8">
+            <form [formGroup]="patientForm" novalidate class="col-md-10"> 
+                <div  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Personal"  formGroupName="personal">                   
+                    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+                        <md-icon class="material-icons valign_mid" svgIcon="account-card-details"></md-icon>
+                        <span class="hoffset1 valign_mid">PERSONAL INFO</span>
+                    </md-chip>
+                    <div class="col-md-12 action_btn voffset8">
                         <div  class="col-md-6 dark_blue">
-                            <md2-datepicker  format="DD/MM/YYYY" ngDefaultControl formControlName="birthdate" placeholder="Birthday"></md2-datepicker>
+                            <md2-datepicker  format="DD/MM/YYYY" ngDefaultControl class="dark_bloe" formControlName="birthdate" placeholder="Birthday"></md2-datepicker>
                         </div>
-                        <div class="md-col-6">Gender 
+                        <div class="md-col-6">
+                            Gender 
                             <md-radio-group #group ngDefaultControl formControlName="gender">
                                 <md-radio-button *ngFor="let it of avatarData"
                                     [value]="it.value"
                                     [ngClass]="it.color"
                                     [aria-label]="it.title" 
                                     [checked]="group.value === it.value">
-                                    <button md-mini-fab   [ngClass]="it.color" aria-label="Eat cake">
+                                    <button md-mini-fab   color="{{it.color}}" aria-label="Eat cake">
                                         {{it.title}}
-                                    </button>                                    
+                                    </button>       
                                 </md-radio-button>
                             </md-radio-group>
                         </div>
-                    </md-list-item>
-                    <md-list-item class="col-md-12 action_btn voffset8">
-                        <div md-line class="col-md-12  voffset8">
-                            <md-input class="col-md-6" ngDefaultControl  formControlName="firstname" id="firstname" placeholder="First name"></md-input>
-                            <small [hidden]="!patientForm.controls.personal.controls.firstname.touched || (patientForm.controls.personal.controls.firstname.valid && patientForm.controls.personal.controls.firstname.touched)">
-                                Firstname required
-                            </small>
-                                </div>
-                                <div md-line class="col-md-12 voffset8">
-                                    <md-input class="col-md-6" ngDefaultControl formControlName="middlename" id="middlename" placeholder="Middlename" [(ngModel)]="patient.middlename" [value]="patient.middlename" ></md-input>
-                                </div>
-                                <div md-line class="col-md-12 voffset8">
-                                <md-input class="col-md-6" ngDefaultControl formControlName="lastname" id="lastname" placeholder="Last name">  </md-input>
-                                <small [hidden]="!patientForm.controls.personal.controls.lastname.touched || (patientForm.controls.personal.controls.lastname.valid && patientForm.controls.personal.controls.firstname.touched)">
-                                    Lastname required
-                            </small>
+                    </div>
+                    <md-input-container color="primary" class="action_btn example-full-width voffset4">                           
+                        <input mdInput  ngDefaultControl placeholder="First name"  class="dark_blue" formControlName="firstname" required>
+                        <md-error [hidden]="!patientForm.controls.personal.controls.firstname.touched || (patientForm.controls.personal.controls.firstname.valid && patientForm.controls.personal.controls.firstname.touched)">
+                            First Name Required
+                        </md-error>
+                    </md-input-container>
+                    <md-input-container  class="action_btn example-full-width voffset4">
+                        <input mdInput ngDefaultControl formControlName="middlename" class="dark_blue" id="middlename" placeholder="Middlename" [(ngModel)]="patient.middlename" [value]="patient.middlename">
+                    </md-input-container>
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput  ngDefaultControl formControlName="lastname" class="dark_blue" id="lastname" placeholder="Last name">
+                        <md-error [hidden]="!patientForm.controls.personal.controls.lastname.touched || (patientForm.controls.personal.controls.lastname.valid && patientForm.controls.personal.controls.firstname.touched)">
+                            Lastname required
+                        </md-error>
+                    </md-input-container>
+                </div>
+                <div  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Contact" formGroupName="contact" >
+                    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+                        <i class="material-icons valign_mid">contact_mail</i>
+                        <span class="hoffset1 valign_mid">CONTACT INFO</span>  
+                    </md-chip>
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput ngDefaultControl type="email" class="dark_blue" placeholder="Email"  id="email" formControlName="email" required>
+                        <md-error [hidden]="!patientForm.controls.contact.controls.email.touched || (patientForm.controls.contact.controls.email.valid && patientForm.controls.contact.controls.email.touched )">
+                            Email required
+                        </md-error>
+                    </md-input-container> 
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput ngDefaultControl formControlName="street" class="dark_blue" placeholder="Street" />
+                    </md-input-container>      
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput ngDefaultControl formControlName="place" class="dark_blue" placeholder="Place" />
+                    </md-input-container>   
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput class="col-md-6 dark_blue" ngDefaultControl formControlName="phone"  placeholder="Phone number">
+                    </md-input-container>
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput class="col-md-6 dark_blue" ngDefaultControl formControlName="mobilephone"  placeholder="Mobile Phone number" >
+                    </md-input-container>
+                </div>   
+                <div  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.HealthInfo" formGroupName="additional">                                       
+                    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+                        <md-icon class="material-icons valign_mid" svgIcon="file-account"></md-icon>
+                        <span class="hoffset1 valign_mid">HEALTH INFO</span>  
+                    </md-chip>
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <input mdInput placeholder="Allergies" ngDefaultControl formControlName="allergies" class="dark_blue">
+                    </md-input-container>
+                    <md-input-container class="action_btn example-full-width voffset4">
+                        <textarea mdInput ngDefaultControl formControlName="notes" placeholder="Notes" class="dark_blue"></textarea>
+                    </md-input-container>                           
+                </div>
+                <div  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Gallery">                    
+                    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+                        <i class="material-icons valign_mid">add_a_photo</i>
+                        <span class="hoffset1 valign_mid">GALLERY</span>
+                    </md-chip>
+                </div>
+                <div *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Summary">
+                    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+                        <md-icon class="material-icons valign_mid" svgIcon="file-check"></md-icon>
+                        <span class="hoffset1 valign_mid">SUMMARY</span>
+                        <div class="frame mini hoffset2">                        
+                            <a (click)="onSubmit()" [ngClass]="{'not-active': !patientForm.valid }" >
+                                <i class="material-icons line-height-mini">check</i>                           
+                            </a>  
                         </div>
-                    </md-list-item>
-                </md-list>
-                <md-list  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Contact" formGroupName="contact" >
-                    <md-list-item class="badge glass white action_btn col-md-6">
-                        <i class="material-icons" >contact_mail</i>
-                        <span class="hoffset1">CONTACT DATA</span>
-                    </md-list-item>
-                    <md-list-item class="col-md-12 action_btn">               
-                        <div md-line class="col-md-12 voffset8">       
-                            <md-input class="col-md-6" ngDefaultControl type="email" placeholder="Email" id="email" formControlName="email"></md-input>
-                            <small [hidden]="!patientForm.controls.contact.controls.email.touched || (patientForm.controls.contact.controls.email.valid && patientForm.controls.contact.controls.email.touched )">
-                                Email required
-                            </small>
-                        </div>
-                        <div md-line class="col-md-12 voffset8">
-                            <md-input class="col-md-6" ngDefaultControl formControlName="place" id="place" placeholder="Place"></md-input>
-                        </div>
-                        <div md-line class="col-md-12 voffset8">
-                            <md-input class="col-md-6" ngDefaultControl formControlName="street" id="street" placeholder="Street"></md-input>
-                        </div>
-                        <div md-line class="col-md-12 voffset8">
-                            <md-input class="col-md-6" ngDefaultControl formControlName="phone" id="phone" placeholder="Phone number"></md-input>
-                        </div>
-                        <div md-line class="col-md-12 voffset8">
-                            <md-input class="col-md-6" ngDefaultControl formControlName="mobilephone"  id="mobilephone" placeholder="Mobile Phone number" ></md-input>
-                        </div>
-                    </md-list-item>
-                </md-list>
-                <md-list  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.HealthInfo" formGroupName="additional">
-                    <md-list-item class="badge glass action_btn col-md-6">
-                        <i class="material-icons" >description</i>
-                        <span class="hoffset1">HEALTH INFO</span>
-                    </md-list-item>
-                    <md-list-item class="col-md-12 dark_blue action_btn voffset8">  
-                        <div md-line class="col-md-12 voffset8">
-                            <md-input class="col-md-6"  placeholder="Allergies" ngDefaultControl formControlName="allergies" ></md-input>
-                        </div>
-                        <div md-line class="col-md-12 voffset8">
-                            <textarea class="col-md-6" md-input ngDefaultControl formControlName="notes" placeholder="Notes"  columns="3" md-maxlength="1500" rows="5"></textarea> 
-                        </div>
-                    </md-list-item>
-                </md-list>
-                <md-list  *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Gallery">
-                    <md-list-item class="badge glass white action_btn col-md-6">
-                        <i class="material-icons">add_a_photo</i>
-                        <span class="hoffset1">GALLERY</span>
-                    </md-list-item>
-                </md-list>
-                <div class="form-group col-md-6" *ngIf="(patientStore.patientFormPage | async ) == patientFormPage.Summary">
-                    <div class="contact">{{ patientForm.value.personal.firstname | capitalize }} {{ patientForm.value.personal.middlename | capitalize }} {{ patientForm.value.personal.lastname | capitalize }}</div>
-                    <md-card-avatar>   
+                    </md-chip>
+                   <div class="col-md-12">
+                    <div class="contact white_active dark_blue_bg pos_relative col-md-6">
+                        <span *ngIf="!patientForm.value.personal.firstname">FIRSTNAME</span>
+                        <span *ngIf="patientForm.value.personal.firstname">{{ patientForm.value.personal.firstname | capitalize }}</span>
+                        <span> {{ patientForm.value.personal.middlename | capitalize }} </span>
+                        <span *ngIf="!patientForm.value.personal.lastname">LASTNAME</span>
+                        <span *ngIf="patientForm.value.personal.lastname">{{ patientForm.value.personal.lastname | capitalize }}</span>
+                    </div>
+                    <md-card-avatar class="col-md-12">   
                         <a *ngIf="!patientForm.value.personal.photo"  class="profile-spot middle no-border">
                             <img *ngIf="patientForm.value.personal.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />
                             <img *ngIf="patientForm.value.personal.gender == 'M'"  src="assets/images/svg/human-male.svg" class="img" />
@@ -144,49 +155,40 @@
                         <a *ngIf="patientForm.value.personal.photo" class="profile-spot small no-border">
                             <img  src="uploads/{{patientForm.value.personal.photo}}"  class="img" />
                         </a>
-                    </md-card-avatar>
-                    <md-list>
-                        <md-list-item class="badge glass white action_btn col-md-6">
-                            <i class="material-icons">note</i>
-                            <span class="hoffset1">SUMMARY</span>
-                        </md-list-item>
-                        <md-list-item class="col-md-6 action_btn">
-                            <p md-line>
-                                <span><i class="material-icons">perm_contact_calendar</i></span>
-                                <span> {{patientForm.value.personal.birthdate}} </span>
-                            </p>
-                        </md-list-item>
-                        <md-list-item class="col-md-12 action_btn">
-                            <p md-line>
-                                <span>  <i class="material-icons">home</i> </span>
-                                <span class="dark_blue"> {{ patientForm.value.contact.street | capitalize }}, </span>
-                                <span class="dark_blue"> {{ patientForm.value.contact.place | capitalize }} </span>
-                            </p>
-                        </md-list-item>
-                        <md-list-item class="col-md-6 action_btn">
-                            <p md-line>
-                                <span>  <i class="material-icons">contact_mail</i> </span>
-                                <span class="dark_blue"> {{patientForm.value.contact.email}} </span>
-                            </p>
-                        </md-list-item>                            
-                        <md-list-item class="col-md-6 action_btn">
-                            <p md-line>
-                                <span><i class="material-icons">contact_phone</i> </span>
-                                <span class="dark_blue">{{ patientForm.value.contact.phone | capitalize }}</span>
-                            </p>
-                        </md-list-item>
-                        <md-list-item class="col-md-6 action_btn">
-                            <p md-line>
-                                <span>  <i class="material-icons">smartphone</i> </span>
-                                <span class="dark_blue"> {{ patientForm.value.contact.mobilephone | capitalize }}</span>
-                            </p>
-                        </md-list-item>
-                        <md-list-item class="md-1-line">      
-                            <div class="col-sm-offset-3 col-sm-8">
-                                <button md-raised-button class="md-accent" type="submit" (click)="onSubmit()" [disabled]="!patientForm.valid">add</button>
-                            </div>          
-                        </md-list-item>
-                    </md-list>
+                    </md-card-avatar>     
+                    </div>
+                    <md-chip-list class="mat-chip-list-stacked voffset4 col-md-4">                       
+                        <md-chip selected="true" color="warn" class="combo_blue_bg white line-height-mini voffset4">
+                            <i class="material-icons valign_mid">perm_contact_calendar</i>
+                            <span class="hoffset2">{{patientForm.value.personal.birthdate}}</span>
+                        </md-chip>                       
+                        <md-chip selected="true" color="warn"  class="combo_blue_bg white line-height-mini">
+                            <i class="material-icons valign_mid">home</i>
+                            <span class="hoffset2">{{ patientForm.value.contact.street | capitalize }} {{ patientForm.value.contact.place | capitalize }}</span>
+                        </md-chip>
+                        <md-chip  selected="true" color="warn" class="combo_blue_bg  white line-height-mini">
+                            <i class="material-icons valign_mid">contact_mail</i>
+                            <span class="hoffset2">{{patientForm.value.contact.email}}</span>
+                        </md-chip>
+                        <md-chip selected="true"  color="warn"  class="combo_blue_bg white line-height-mini">
+                            <i class="material-icons valign_mid">contact_phone</i>
+                            <span class="hoffset2">{{ patientForm.value.contact.phone | capitalize }}</span>
+                        </md-chip>
+                        <md-chip selected="true" color="warn" class="combo_blue_bg white line-height-mini">
+                             <i class="material-icons valign_mid">smartphone</i>
+                             <span class="hoffset2">{{ patientForm.value.contact.mobilephone | capitalize }}</span>
+                        </md-chip>
+                    </md-chip-list> 
+                    <md-chip-list class="mat-chip-list-stacked voffset4 col-md-7">
+                        <md-chip selected="true" color="warn"  class="combo_blue_bg white col-md-5 line-height-mini">
+                            <md-icon class="material-icons valign_mid" svgIcon="clipboard-account"></md-icon>
+                            <span class="hoffset2">{{ patientForm.value.additional.allergies}}</span>
+                        </md-chip>
+                        <md-chip  selected="true" color="warn" class="col-md-5 hoffset2 combo_blue_bg white line-height-mini">
+                            <md-icon class="material-icons valign_mid" svgIcon="comment-account"></md-icon>
+                            <span class="hoffset2">{{patientForm.value.additional.notes}}</span>
+                        </md-chip>
+                     </md-chip-list>
                 </div>
             </form> 
         </md-card-content>

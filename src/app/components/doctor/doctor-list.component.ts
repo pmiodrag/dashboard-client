@@ -102,7 +102,7 @@ export class DoctorListComponent {
 //    count: number;
 //     collection = [];
     private _doctors: Rx.BehaviorSubject<List<Doctor>> = new Rx.BehaviorSubject(List([]));
-    constructor(private router: Router, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private doctorService: DoctorBackendService, private notificationService: NotificationService, private doctorStore: DoctorStore) {
+    constructor(private router: Router, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private notificationService: NotificationService, public doctorStore: DoctorStore) {
 //        this.refreshDoctors();
 //        this.collapse();
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));

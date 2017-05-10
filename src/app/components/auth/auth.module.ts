@@ -25,7 +25,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       deps: [Http, RequestOptions]
     }
     ],
-    imports: [SharedModule.forRoot(), MaterialModule.forRoot()],
+    imports: [SharedModule.forRoot(), MaterialModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AuthModule {

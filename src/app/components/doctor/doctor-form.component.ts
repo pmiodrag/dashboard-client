@@ -53,7 +53,7 @@ export class DoctorFormComponent  implements OnInit {
   maxDate: Date = new Date(2016, 12, 15);
  
 
-    constructor(private router: Router, private _fb: FormBuilder, private doctorStore: DoctorStore, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private doctorService: DoctorBackendService, private notificationService: NotificationService) {
+    constructor(private router: Router, private _fb: FormBuilder, public doctorStore: DoctorStore, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private notificationService: NotificationService) {
         
         mdIconRegistry.addSvgIcon('F', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-female.svg'));
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));

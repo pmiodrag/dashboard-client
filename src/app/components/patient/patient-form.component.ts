@@ -23,7 +23,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 export class PatientFormComponent  implements OnInit {
     iconClass: string = ICON_CLASS;
-    
+ 
     iconClassBg: string = ICON_CLASS_BG; 
     public patientFormPage = PatientFormPage;     
 //    public uploader: FileUploader = new FileUploader({ url: '/patient/upload' });
@@ -43,12 +43,12 @@ export class PatientFormComponent  implements OnInit {
         id: 'M',
         title: 'M',
         value: 'M',
-        color: 'md-primary'
+        color: 'primary'
     }, {
             id: 'F',
             title: 'F',
             value: 'F',
-            color: 'md-warn'
+            color: 'warn'
         }];
 
   disabled: boolean = true;
@@ -59,11 +59,12 @@ export class PatientFormComponent  implements OnInit {
 //  maxDate: Date = new Date(2016, 12, 15);
  
 
-    constructor(private router: Router, private _fb: FormBuilder, private patientStore: PatientStore, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private patientService: PatientBackendService, private notificationService: NotificationService) {
-        
-        mdIconRegistry.addSvgIcon('F', 'assets/images/svg/human-female.svg');
-        mdIconRegistry.addSvgIcon('M', 'assets/images/svg/human-male.svg');
-        mdIconRegistry.addSvgIcon('identification-card', 'assets/images/svg/account-card-details.svg');
+    constructor(private router: Router, private _fb: FormBuilder, public patientStore: PatientStore, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private patientService: PatientBackendService, private notificationService: NotificationService) {
+        mdIconRegistry.addSvgIcon('account-card-details',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-card-details.svg'));
+        mdIconRegistry.addSvgIcon('clipboard-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/clipboard-account.svg'));
+        mdIconRegistry.addSvgIcon('comment-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/comment-account.svg'));
+        mdIconRegistry.addSvgIcon('file-account', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/file-account.svg'));
+        mdIconRegistry.addSvgIcon('file-check', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/file-check.svg'));
       
     }
     handleChange(value: any) {
@@ -94,7 +95,7 @@ export class PatientFormComponent  implements OnInit {
             }),
             contact: this._fb.group({
                 email: ['', ValidationService.emailValidator],
-                street: ['', <any>Validators.required],
+                street: [''],
                 place: [''],
                 phone: [''],
                 mobilephone: ['']

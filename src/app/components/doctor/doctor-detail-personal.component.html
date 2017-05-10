@@ -1,12 +1,15 @@
-<md-list>
-    <md-list-item class="badge glass action_btn col-md-6">
-        <i class="material-icons">person</i>
-        <span class="hoffset1">PERSONAL DATA</span>                    
-    </md-list-item>
-    <md-list-item class="col-md-6 action_btn">
-        <p md-line>
-            <span><i class="material-icons">account_box</i> </span>
-            <span> {{(doctorStore.selected | async)?.birthdate}} </span>
-        </p>
-    </md-list-item> 
-</md-list>
+<div class="col-md-12">
+    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+        <md-icon class="material-icons valign_mid" svgIcon="account-card-details"></md-icon>
+        <span class="hoffset1 valign_mid">PERSONAL INFO</span>
+    </md-chip> 
+</div>
+<md-chip-list  [@flyInOut]="true" class="mat-chip-list-stacked action_btn voffset4 col-md-4">
+    <md-chip selected="true" color="warn" class="combo_blue_bg white line-height-mini voffset4">
+        <div class="col-md-4">
+            <i class="material-icons valign_mid">perm_contact_calendar</i>
+            <span class="hoffset1 valign_mid">Birth date</span>
+        </div>       
+        <span> {{(doctorStore.selected | async)?.birthdate}}</span>
+    </md-chip> 
+</md-chip-list>

@@ -19,7 +19,7 @@ export class AuthService {
     constructor(private router: Router, public http: Http, public authHttp: AuthHttp) {
         // Capture the user credentials when the user has succesfully logged in
         this.lock.on('authenticated', (authResult: any) => {
-            localStorage.setItem('id_token', authResult.idToken);
+            localStorage.setItem('token', authResult.idToken);
 
             this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
                 if (error) {
@@ -51,9 +51,10 @@ export class AuthService {
     }
     public logout() {
         localStorage.removeItem('profile');
-        localStorage.removeItem('id_token');
+        localStorage.removeItem('token');
         this.picture = "assets/img/avatar.jpg";
         this.name = "";
+        this.router.navigateByUrl('/dashboard');
     }
 
     public loggedIn() {

@@ -1,10 +1,10 @@
-import { ClientPage } from './app.po';
+import { DashPage } from './app.po';
 
-describe('client App', function() {
-  let page: ClientPage;
+describe('dash App', () => {
+  let page: DashPage;
 
   beforeEach(() => {
-    page = new ClientPage();
+    page = new DashPage();
   });
 
   it('should display message saying app works', () => {

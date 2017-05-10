@@ -17,7 +17,7 @@ import { MaterialModule } from '@angular/material';
 import {CalendarModule} from 'primeng/primeng';
 import { Md2Module }  from 'md2';
 @NgModule({
-    imports: [ SharedModule.forRoot(), MaterialModule.forRoot(),PatientRoutingModule, CalendarModule, Md2Module.forRoot() ],
+    imports: [ SharedModule.forRoot(), MaterialModule,PatientRoutingModule, CalendarModule, Md2Module.forRoot() ],
     declarations: [
         PatientComponent,
         PatientHeaderComponent,
@@ -35,7 +35,7 @@ import { Md2Module }  from 'md2';
 //    exports: [
 //        PatientsComponent
 //    ],
-//    imports: [MaterialModule.forRoot()],
+//    imports: [MaterialModule],
 //    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PatientModule {

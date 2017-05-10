@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class PatientDetailHealthComponent {
-    constructor(private router: Router, private patientStore: PatientStore, private route: ActivatedRoute) {
+    constructor(public patientStore: PatientStore) {
         this.patientStore.setPatientFormPage(PatientFormPage.HealthInfo);
     }
    

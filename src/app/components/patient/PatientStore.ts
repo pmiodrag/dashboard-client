@@ -78,27 +78,30 @@ export class PatientStore {
     }
     
     getPatient(id) {
-        console.log("this._patients getPatient()  _selected value", this._selected.getValue());
-        this._selected.next(<Patient>this._patients.getValue().find(x => x.id == id));
-//         this.patientBackendService.getAllPatients()
-//        .subscribe(
-//            people => this.patientList = people,
-//            error => console.error('Error: '),
-//            () => { console.log('getPatient by id!',  this.patientList['content'].find(x => x.id == id)); 
-//            this._selected.next(<Patient>this.patientList['content'].find(x => x.id == id))}
-//        )
-//       if(this.patientList != null) {
-//            return this._patients.getValue().find(x => x.id == id);
-//       } else {
-//          console.log("this._patients getPatient()", this._patients.getValue())
-//       }
-//      
+        console.log("this._selected111",  this._selected.getValue());
+        console.log("this._patients getPatient()  _selected value",  this._patients.getValue(), "id", id);
+        if(this._patients != null && this._patients.getValue().size != 0) {
+             this._selected.next(<Patient>this._patients.getValue().find(x => x.id == id));
+            console.log("this._selected 2222",  this._selected.getValue());
+        } else {
+            this.getPatientById (id) ;
+        }
+
     }
     getAllPatients() {
         return this.patientBackendService.getAllPatients()
     }
+    getPatientById (id) {
+         return this.patientBackendService.getAllPatients()
+         .subscribe(
+            people => this.patientList = people,
+            error => console.error('Error: '),
+            () => { this._selected.next(this.patientList['content'].find(p => p.id = id))
+                console.log('Selected!', this._selected.getValue())}
+        )
+    }
     loadInitialData() {
-        console.log("PatientStore loadInitialData");
+        console.log("PatientStore loadInitialData",  this._patients.getValue());
        this.patientBackendService.getAllPatients()
         .subscribe(
             people => this.patientList = people,

@@ -23,7 +23,7 @@ export class DoctorHeaderComponent {
     doctor: Doctor;
     listDisplayModeEnabled: boolean;
 
-    constructor(private notificationService: NotificationService, private doctorStore: DoctorStore) {
+    constructor(public notificationService: NotificationService, public doctorStore: DoctorStore) {
     }
 
 

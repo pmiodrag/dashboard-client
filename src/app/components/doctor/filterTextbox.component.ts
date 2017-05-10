@@ -1,13 +1,11 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'filter-textbox',
-  template: `
-
-  
-        <md-input placeholder="Filter" align="end"  [(ngModel)]="model.filter" 
-                (keyup)="filterChanged($event)"></md-input>
-        
-    `
+  template: `<md-input-container>
+                        <input mdInput placeholder="Filter doctors" align="end"  [(ngModel)]="model.filter" 
+                (keyup)="filterChanged($event)" ngDefaultControl>
+                    </md-input-container>`
+    
   
 //  directives: [FORM_DIRECTIVES, MD_INPUT_DIRECTIVES]
 })

@@ -75,11 +75,15 @@ export class DoctorDetailComponent {
     toggleID: number;
 
     private _doctors: Rx.BehaviorSubject<Doctor> = new Rx.BehaviorSubject(null);
-    constructor(private route: ActivatedRoute, private router: Router, private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private doctorService: DoctorBackendService, private notificationService: NotificationService, private doctorStore: DoctorStore) {
-
+    constructor(private route: ActivatedRoute, private router: Router, private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, public doctorStore: DoctorStore) {
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));
         mdIconRegistry.addSvgIcon('F', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-female.svg'));
-
+        mdIconRegistry.addSvgIcon('account-card-details',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-card-details.svg'));
+        mdIconRegistry.addSvgIcon('clipboard-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/clipboard-account.svg'));
+        mdIconRegistry.addSvgIcon('comment-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/comment-account.svg'));
+        mdIconRegistry.addSvgIcon('file-account', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/file-account.svg'));
+        mdIconRegistry.addSvgIcon('calendar-blank',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/calendar-blank.svg'));
+        mdIconRegistry.addSvgIcon('city', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/city.svg'));
     }
 
     ngOnInit() {
@@ -93,7 +97,7 @@ export class DoctorDetailComponent {
         }); 
     }
    
-    private navigateTo(page: string) {        
+    public navigateTo(page: string) {        
         if (page == 'treatments') {
             this.router.navigate(['/doctors', this.doctorID, this.owner, page] );
             this.doctorStore.setDoctorFormPage(DoctorFormPage.Treatments);

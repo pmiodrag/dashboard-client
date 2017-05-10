@@ -11,7 +11,7 @@ export class TreatmentComponent {
     
     private userID: number;
     private owner: string;
-    constructor(private router: Router, public authService: AuthService, private route: ActivatedRoute, private treatmentStore: TreatmentStore) {
+    constructor(private router: Router, public authService: AuthService, private route: ActivatedRoute, public treatmentStore: TreatmentStore) {
     }   
     
     ngOnInit() {

@@ -9,7 +9,7 @@
             </div>   
             <div class="frame frame_active mini hoffset8">                        
                 <a  (click)="navigateTo('personal')" >
-                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Personal}">person</i>          
+                    <md-icon class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.Personal}" svgIcon="account-card-details"></md-icon>                   
                 </a>
             </div> 
             <div class="frame frame_active mini hoffset2">                        
@@ -24,7 +24,7 @@
             </div>
             <div class="frame frame_active mini hoffset2">                        
                 <a  (click)="navigateTo('health')" >
-                    <i class="material-icons line-height-mini" [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.HealthInfo}">description</i>                 
+                    <md-icon class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (patientStore.patientFormPage | async ) == patientFormPage.HealthInfo}" svgIcon="file-account"></md-icon>
                 </a>
             </div>
             <div class="frame frame_active mini hoffset2">                        
@@ -34,8 +34,8 @@
             </div>
         </div>
     </md-toolbar>
-    <div id="card" class="combo_blue_bg"> 
-        <div class="contact glass" *ngIf="patientStore.selected | async">{{ (patientStore.selected | async)?.firstname  }} {{ (patientStore.selected | async)?.lastname  }}</div>
+    <div id="card" class="white_active"> 
+        <div class="contact combo_blue_bg white" *ngIf="patientStore.selected | async">{{ (patientStore.selected | async)?.firstname  }} {{ (patientStore.selected | async)?.lastname  }}</div>
         <md-card-avatar>   
             <a *ngIf="!(patientStore.selected | async)?.photo"  class="profile-spot middle no-border">
                 <img *ngIf="(patientStore.selected | async)?.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />

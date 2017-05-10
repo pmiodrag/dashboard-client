@@ -7,7 +7,7 @@ import 'rxjs/add/operator/switchMap';
 })
 
 export class PatientDetailGalleryComponent {
-    constructor(private patientStore: PatientStore) {
+    constructor(public patientStore: PatientStore) {
         this.patientStore.setPatientFormPage(PatientFormPage.Gallery);
     }
 

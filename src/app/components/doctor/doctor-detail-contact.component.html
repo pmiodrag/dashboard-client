@@ -1,31 +1,36 @@
-<md-list>
-    <md-list-item class="badge glass action_btn col-md-6">
-        <i class="material-icons">contact_mail</i>
-        <span class="hoffset1">CONTACT DATA</span>
-    </md-list-item>
-    <md-list-item class="col-md-6 action_btn">
-        <p md-line>
-            <span>  <i class="material-icons">contact_mail</i> </span>
-            <span> {{(doctorStore.selected | async)?.email}} </span>
-        </p>
-    </md-list-item>
-    <md-list-item class="col-md-6 action_btn">
-        <p md-line>
-            <span>  <i class="material-icons">home</i> </span>
-            <span> {{(doctorStore.selected | async)?.address}}, </span>
-            <span> {{(doctorStore.selected | async)?.place}} </span>
-        </p>
-    </md-list-item>
-    <md-list-item class="col-md-6 action_btn">
-        <p md-line>
-            <span><i class="material-icons">contact_phone</i> </span>
-            <span> {{(doctorStore.selected | async)?.phone}} </span>
-        </p>
-    </md-list-item>
-    <md-list-item class="col-md-6 action_btn">
-        <p md-line>
-            <span>  <i class="material-icons">smartphone</i> </span>
-            <span> {{(doctorStore.selected | async)?.mobilephone}} </span>
-        </p>
-    </md-list-item>
-</md-list>
+<div class="col-md-12">
+    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4">
+        <i class="material-icons valign_mid">contact_mail</i>
+        <span class="hoffset1 valign_mid">CONTACT INFO</span>  
+    </md-chip>
+</div>
+<md-chip-list  class="mat-chip-list-stacked action_btn voffset4 col-md-4">   
+    <md-chip [@flyInOut]="true" selected="true" color="warn" class="combo_blue_bg white  line-height-mini voffset4">
+        <div class="col-md-4">
+            <i class="material-icons valign_mid">contact_mail</i>
+            <span class="hoffset1 valign_mid">Email</span>
+        </div>   
+        <span> {{(doctorStore.selected | async)?.email}}</span>
+    </md-chip>
+    <md-chip selected="true" color="warn" class="combo_blue_bg white  line-height-mini voffset4">
+        <div class="col-md-4">
+            <i class="material-icons valign_mid">home</i>
+            <span class="hoffset1 valign_mid">Address</span>
+        </div>
+        <span> {{(doctorStore.selected | async)?.address}} {{(doctorStore.selected | async)?.place}}</span>
+    </md-chip> 
+    <md-chip selected="true" color="warn" class="combo_blue_bg white  line-height-mini voffset4">
+        <div class="col-md-4">
+            <i class="material-icons valign_mid">contact_phone</i>
+            <span class="hoffset1 valign_mid">Phone</span>
+        </div>
+        <span> {{(doctorStore.selected | async)?.phone}}</span>
+    </md-chip> 
+    <md-chip selected="true" color="warn" class="combo_blue_bg white  line-height-mini voffset4">
+        <div class="col-md-4">
+            <i class="material-icons valign_mid">smartphone</i>
+            <span class="hoffset1 valign_mid">Mobile phone</span>
+        </div>
+        <span> {{(doctorStore.selected | async)?.mobilephone}}</span>
+    </md-chip>
+</md-chip-list>

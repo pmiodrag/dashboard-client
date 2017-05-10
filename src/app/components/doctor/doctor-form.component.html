@@ -1,4 +1,4 @@
-<style>
+Gallery<style>
     #file-input { display: none; }
     .md-radio-outer { display: none !important; }
     .md-radio-inner { display: none !important; }
@@ -18,8 +18,8 @@
                 </a>
             </div>
             <div class="frame frame_active mini hoffset2">    
-                <a  (click)="setDoctorFormPage(doctorFormPage.Photo)"  >
-                    <i class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Photo}">add_a_photo</i>                
+                <a  (click)="setDoctorFormPage(doctorFormPage.Gallery)"  >
+                    <i class="material-icons line-height-mini"  [ngClass]="{'combo_orange': (doctorStore.doctorFormPage | async ) == doctorFormPage.Gallery}">add_a_photo</i>                
                 </a>
             </div>
             <div class="frame frame_active mini hoffset2">    
@@ -48,7 +48,7 @@
         <md-card-content>
             <form [formGroup]="doctorForm" novalidate> 
                 <md-list  *ngIf="(doctorStore.doctorFormPage | async ) == doctorFormPage.Personal"  formGroupName="personal" >  
-                    <md-list-item class="badge glass white action_btn col-md-6">
+                    <md-list-item class="badge glass dark_blue_bg white action_btn col-md-6">
                         <i class="material-icons" >person</i>
                         <span class="hoffset1">PERSONAL DATA</span>                    
                     </md-list-item>

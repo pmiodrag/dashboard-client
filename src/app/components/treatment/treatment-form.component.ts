@@ -1,17 +1,13 @@
-import { Component, Input, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {Treatment, TreatmentBackendService} from "./treatment.service";
+import { Treatment, TreatmentBackendService} from "./treatment.service";
 import { NotificationService  } from '../../core/notification.service';
-import { ValidationService} from '../../shared/services/validation.service';
 import { TreatmentStore } from './TreatmentStore';
 import { Diagnose } from '../diagnose/diagnose.service';
 import { DiagnoseStore } from '../diagnose/DiagnoseStore';
 import { DoctorStore } from '../doctor/DoctorStore';
-import { TypeaheadMatch } from 'ng2-bootstrap';
-import { ActivatedRoute, Params  }  from '@angular/router';
-//import {TimepickerComponent, DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
-//import {Typeahead} from 'ng2-typeahead/ng2-typeahead'
-//import {TYPEAHEAD_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import { Doctor} from "../doctor/doctor.service";
+import { ActivatedRoute }  from '@angular/router';
 @Component({
     selector: 'treatment-form',
     templateUrl: 'treatment-form.component.html'
@@ -27,16 +23,14 @@ export class TreatmentFormComponent {
     private patientID: number;
     private diagnoseId : number;
     private doctorId : number;
-    // Date and time propertiesTimepicker
 
     public selected: string = '';
     public typeaheadLoading: boolean = false;
     public typeaheadNoResults: boolean = false;
-    
-    constructor(private _fb: FormBuilder, private treatmentStore: TreatmentStore, private diagnoseStore: DiagnoseStore,  private doctorStore: DoctorStore, private treatmentService: TreatmentBackendService, 
-        private notificationService: NotificationService, private route: ActivatedRoute) { }
-
-   
+    doctorCtrl: FormControl;
+    diagnoseCtrl: FormControl;
+    constructor(private _fb: FormBuilder, public treatmentStore: TreatmentStore, public diagnoseStore: DiagnoseStore,  public doctorStore: DoctorStore, private treatmentService: TreatmentBackendService, 
+        private notificationService: NotificationService, private route: ActivatedRoute) { }   
 
     ngOnInit() {
          this.route.parent.parent.parent.params.subscribe(params => {
@@ -45,10 +39,11 @@ export class TreatmentFormComponent {
             console.log("ngOnInit TreatmentFormComponent", this.patientID);
 //            this.treatment = new Treatment(0, this.patientID, 1, new Date(), '', 1, '')
         });
-        
+         this.doctorCtrl = new FormControl();
+         this.diagnoseCtrl = new FormControl();
 //        this.subscription = this.notificationService.getFormActionChangeEmitter()
 //            .subscribe(treatment => this.onFormActionChange(treatment));
-        this.treatmentForm =this._fb.group({
+         this.treatmentForm =this._fb.group({
             therapy: ['', Validators.compose([
                 Validators.required,
                 Validators.minLength(3),
@@ -69,28 +64,12 @@ export class TreatmentFormComponent {
                 Validators.maxLength(10)
             ])]
         });
-        
-
-    }
-//    onFormActionChange(treatment: Treatment) {
-//        console.log("onFormActionChange treatment", treatment);
-//        this.treatment = treatment;
-//        if (treatment.id == -1) {
-//            this.formTitle = "Add Treatment";
-//            this.submitAction = 'add';
-//        } else {
-//            this.selected = treatment.diagnose;
-//            this.formTitle = "Edit Treatment";
-//            this.submitAction = 'edit';
-//        }
-//    }
-    ngOnDestroy() {
-//        this.subscription.unsubscribe();
     }
     
     private dataToTreatment() : Treatment {
         let treatment = this.treatmentForm;
-        return new Treatment(0, this.patientID, this.doctorId, new Date(), treatment.value.therapy, this.diagnoseId, treatment.value.price); 
+        console.log("doctorCtrl", this.doctorCtrl.value);
+        return new Treatment(0, this.patientID, this.doctorCtrl.value.id, new Date(), treatment.value.therapy, this.diagnoseCtrl.value.id, treatment.value.price); 
     }
     
    
@@ -134,33 +113,13 @@ export class TreatmentFormComponent {
 //        this.goBack();
     }
 
-    public changeTypeaheadLoading(e: boolean): void {
-        this.typeaheadLoading = e;
-    }
+   
 
-    public changeTypeaheadNoResults(e: boolean): void {
-        this.typeaheadNoResults = e;
+    public displayDoctor(doctor: Doctor): any {
+        return doctor ? "Dr." + doctor.lastname + doctor.firstname : doctor;
     }
-
-//    public typeaheadOnSelect(e: any): void {
-//        if (e != null) {
-//            console.log(`Selected value: ${e.name}`);
-//            this.selected = e.name;
-//        }
-//        
-//    }
-    
-    public typeaheadOnDoctorSelect(e: TypeaheadMatch): void {
-        console.log('Selected doctor value: ', e);
-        if(e.item != null) {
-           this.doctorId = +e.item.id; 
-        }    
-    }
-     public typeaheadOnDiagnoseSelect(e: TypeaheadMatch): void {
-        console.log('Selected value: ', e);
-        if(e.item != null) {
-           this.diagnoseId = +e.item.id; 
-        }    
+    public displayDiagnose(diagnose: Diagnose): any {
+        return diagnose ? diagnose.name : diagnose;
     }
 
 }

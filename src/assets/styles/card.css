@@ -66,6 +66,9 @@
 valign_middle{
     vertical-align: middle;
 }
+.pos_relative {
+     position: relative !important;
+}
 .contact {
   position: absolute;
   top: 20px;
@@ -133,7 +136,7 @@ valign_middle{
     opacity: 0.8;
 }
 .md-input-underline {
-    border-color: #fff !important;
+    border-color: #334555 !important;
 }
 .md-input-underline .md-input-ripple {
     border-color: #fff !important;

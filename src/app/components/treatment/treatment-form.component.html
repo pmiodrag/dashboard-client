@@ -1,61 +1,47 @@
-<div class="col-md-12">
-    <md-toolbar class="col-md-11 combo_blue_bg glass"> 
-        <div class="btn-block col-md-6">
-            <div class="col-md-2"><span class="logo col-md-12 white_bg combo_blue">Treatments</span></div>
-            <div class="frame frame_active small">                        
-                <a  [routerLink]="['../']">
-                    <i class="material-icons">assignment</i>
-                </a>
-            </div>
-            <div class="frame frame_active small hoffset2">   
-                <a [routerLink]="['../']" >
-                    <i class="material-icons" [ngClass]="iconClass">arrow_back</i>                          
-                </a>
-            </div>
+<div class="col-md-12">    
+    <md-chip selected="true" color="accent"  class="badge white_active action_btn col-md-4 voffset4 line-height-mini">
+        <i class="material-icons valign_mid">assignment</i>
+        <span class="hoffset1 valign_mid">NEW TREATMENT</span>  
+        <div class="frame frame_active mini hoffset2">                        
+            <a [routerLink]="['../']" >
+                <i class="material-icons line-height-mini">arrow_back</i>                           
+            </a>  
         </div>
-    </md-toolbar>
+        <div class="frame frame_active mini hoffset2">                        
+            <a (click)="onSubmit()" >
+                <i class="material-icons line-height-mini">check</i>                           
+            </a>  
+        </div>
+    </md-chip>     
     <div class="col-md-12 voffset2"> 
-        <form [formGroup]="treatmentForm" novalidate> 
-            <md-list>
-                 <md-list-item class="col-md-10 action_btn voffset8">
-                    <input formControlName="doctor"
-                           [typeahead]="doctorStore.doctors | async" 
-                           [typeaheadOptionField]="'lastname'"  
-                            (typeaheadOnSelect)="typeaheadOnDoctorSelect($event)"
-                           typeaheadOptionsLimit="27"
-                           typeaheadMinLength="0"
-                           placeholder="Doctors"
-                           class="form-control blue">
-                           <input formControlName="diagnose"
-                           [typeahead]="diagnoseStore.diagnoses | async" 
-                           [typeaheadOptionField]="'name'"  
-                           (typeaheadOnSelect)="typeaheadOnDiagnoseSelect($event)"
-                           typeaheadOptionsLimit="27"
-                           typeaheadMinLength="0"
-                           placeholder="Diagnoses"
-                           class="form-control blue">
-                </md-list-item>
-<!--                <md-list-item class="col-md-6 action_btn voffset8">
-                    
-                </md-list-item>-->
-                <md-list-item class="col-md-12 action_btn voffset8">
-
-                    <div md-line class="col-md-12 voffset8">
-                        <textarea class="col-md-6" md-input ngDefaultControl formControlName="therapy" placeholder="Theraphy"  columns="3" md-maxlength="1500" rows="5"></textarea> 
-                    </div>
-                    <div md-line class="col-md-12 voffset8">
-                        <md-input class="col-md-6" ngDefaultControl formControlName="price" placeholder="Price"></md-input>
-                    </div>
-
-                </md-list-item>
-                 
-                <md-list-item class="col-md-12 action_btn voffset8">      
-                    <div class="col-sm-offset-3 col-sm-12">
-                        <button md-raised-button class="md-accent" type="submit" (click)="onSubmit()" [disabled]="!treatmentForm.valid">add</button>
-                    </div>          
-                </md-list-item>
-            </md-list>
-
+        <form [formGroup]="treatmentForm" novalidate>
+            <!-- Doctors -->
+            <md-input-container class="action_btn col-md-3">
+                <input type="text" mdInput class="dark_blue" placeholder="Select Doctor"  formControlName="doctor"  [formControl]="doctorCtrl" [mdAutocomplete]="doctor">
+            </md-input-container>
+            <md-autocomplete #doctor="mdAutocomplete" [displayWith]="displayDoctor">
+               <md-option *ngFor="let doctor of doctorStore.doctors  | async" [value]="doctor">
+                 Dr. {{ doctor.lastname }} {{ doctor.firstname }}
+               </md-option>
+            </md-autocomplete>
+            <!-- Diagnoses -->
+            <md-input-container class="action_btn col-md-3 hoffset3">
+                <input type="text"  placeholder="Select Diagnose"  class="dark_blue" formControlName="diagnose"  mdInput [formControl]="diagnoseCtrl" [mdAutocomplete]="diagnose">
+            </md-input-container>
+            <md-autocomplete #diagnose="mdAutocomplete" [displayWith]="displayDiagnose">
+               <md-option *ngFor="let diagnose of diagnoseStore.diagnoses  | async" [value]="diagnose">
+                    {{ diagnose.name }}
+               </md-option>
+            </md-autocomplete>
+            <md-input-container class="action_btn col-md-8 voffset4">
+                <textarea mdInput ngDefaultControl formControlName="therapy" placeholder="Theraphy" class="dark_blue"></textarea>
+            </md-input-container>
+            <md-input-container class="action_btn col-md-4 voffset4">
+                <input mdInput placeholder="Price" ngDefaultControl formControlName="price" class="dark_blue">
+            </md-input-container>
+           <button md-mini-fab type="submit" class="dark_blue_bg" (click)="onSubmit()" [disabled]="!treatmentForm.valid">
+            <md-icon class="white">check</md-icon>
+        </button>
         </form>
     </div>
 </div>

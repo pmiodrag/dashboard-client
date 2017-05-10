@@ -34,8 +34,8 @@
             </div>
         </div>
     </md-toolbar>
-    <div id="card" class="combo_blue_bg voffset8"> 
-        <div class="contact glass" *ngIf="doctorStore.selected | async">{{ (doctorStore.selected | async)?.firstname  }} {{ (doctorStore.selected | async)?.lastname  }}</div>
+    <div id="card" class="white_active voffset8"> 
+        <div class="contact combo_blue_bg white" *ngIf="doctorStore.selected | async">{{ (doctorStore.selected | async)?.firstname  }} {{ (doctorStore.selected | async)?.lastname  }}</div>
         <md-card-avatar>   
             <a *ngIf="!(doctorStore.selected | async)?.photo"  class="profile-spot middle no-border">
                 <img *ngIf="(doctorStore.selected | async)?.gender == 'F'"  src="assets/images/svg/human-female.svg"  class="img" />

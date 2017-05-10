@@ -4,7 +4,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { DashboardRoutingModule }   from './dashboard-routing.module';
 import { MaterialModule } from '@angular/material';
 @NgModule({
-    imports: [SharedModule.forRoot(), MaterialModule.forRoot(), DashboardRoutingModule],
+    imports: [SharedModule.forRoot(), MaterialModule, DashboardRoutingModule],
     declarations: [
         DashboardComponent
     ],

@@ -43,6 +43,16 @@ export class PatientBackendService {
             //                          .map(res => <Bookmark[]> res.json())
             //...errors if any
             .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }
+    
+    getPatientById(id: number) : Observable<any[]> { 
+        // ...using get request
+        return this.http.get(this.baseUrl + id)
+            //    ...and calling .json() on the response to return data
+            .map((res: Response) => <any[]>res.json())
+            //                          .map(res => <Bookmark[]> res.json())
+            //...errors if any
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
 
     }
     getFilteredPatients(data: string): Observable<any[]> { 

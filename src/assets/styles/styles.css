@@ -118,17 +118,17 @@ button.btn-white:hover {
 }
 
 .md-input-placeholder, input {
-    color: #fff !important;
+    color: rgb(33, 121, 181) !important; 
     margin: 10px;
 }
 .md-input-underline {
-    border-color: #fff !important;
+    border-color: rgb(33, 121, 181) !important;
 }
 .md-input-underline .md-input-ripple {
     border-color: rgb(33, 121, 181) !important;
 }
 .md-input-underline .md-input-ripple {
-     background-color: #fff !important
+     background-color: rgb(33, 121, 181) !important;
  }
  .avarage {
      width: 300px !important;
@@ -195,6 +195,34 @@ input.typeahead-input:-ms-input-placeholder {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
     color: rgb(33, 121, 181) !important;
 }
+.demo-full-width {
+  width: 100%;
+}
+
+.demo-card {
+  margin: 16px;
+}
+
+.demo-textarea {
+  resize: none;
+  border: none;
+  overflow: auto;
+  padding: 0;
+  background: lightblue;
+}
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
 *, ::after, ::before {
     -webkit-box-sizing: inherit;
     box-sizing: inherit;
@@ -373,30 +401,39 @@ input.typeahead-input:-ms-input-placeholder {
 .email {
     font-size: 10px !important;
 }
-input.ui-inputtext {
+/*input.ui-inputtext {
      color:#fff !important;
-     /*background: transparent;*/
+     background: transparent;
      border: none;
      border-bottom: 1px solid #fff !important;
     font-weight: 100 !important;
     font-size: 14px !important;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;    
-}
+}*/
 /* https://github.com/Promact/md2 MD2 widgets custom styling*/
 .md2-datepicker-input, md2-datepicker-input-text, .md2-datepicker-input svg{ 
-    color: #fff !important;   
+    color: rgb(33, 121, 181) !important;  
 }
 .md2-datepicker-placeholder {
-    color: #fff !important;   
+    color: rgb(33, 121, 181) !important;    
 }
 .md2-datepicker-calendar-icon {
-    color:  #fff !important;
+    color: rgb(33, 121, 181) !important; 
 }
 
-
-
-
-
+.example-full-width {
+  width: 100%;
+}
+.example-form {
+  width: 500px;
+}
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}
+md-chip {
+  min-height: 40px;
+}
 
 
 

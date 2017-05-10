@@ -4,6 +4,7 @@ import { Diagnose, DiagnoseBackendService } from './diagnose.service';
 import { DiagnoseStore } from './DiagnoseStore';
 import { NotificationService  } from '../../core/notification.service';
 import { AuthService } from '../auth/auth.service';
+import { FilterTextboxComponent } from './filterTextbox.component';
 import * as Rx from "rxjs/Rx";
 import {List} from 'immutable';
 
@@ -23,7 +24,7 @@ export class DiagnoseComponent {
     count: number;
     iconClass: string = ICON_CLASS;
     private _diagnoses: Rx.BehaviorSubject<List<Diagnose>> = new Rx.BehaviorSubject(List([]));
-    constructor(public authService: AuthService, private notificationService: NotificationService, private diagnoseStore: DiagnoseStore) {}   
+    constructor(public authService: AuthService, public notificationService: NotificationService, public diagnoseStore: DiagnoseStore) {}   
     
     ngOnInit() {
        console.log("DiagnoseComponent ngOnInit");

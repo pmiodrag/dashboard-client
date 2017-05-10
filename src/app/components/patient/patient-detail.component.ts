@@ -1,4 +1,11 @@
-import { AUTO_STYLE, Component, Input, Output, EventEmitter, trigger, state, style, animate, transition  } from '@angular/core';
+import { AUTO_STYLE, Component, Input, Output, EventEmitter} from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations'; 
 import { Patient, PatientBackendService} from './patient.service';
 import { PatientStore, PatientFormPage } from './PatientStore';
 import {ICON_CLASS, ICON_CLASS_BG} from '../../shared/constants/app.constants';
@@ -60,9 +67,13 @@ export class PatientDetailComponent {
     iconClass: string = ICON_CLASS;
     iconClassBg: string = ICON_CLASS_BG;
     owner: string = PATIENT_OWNER;
-    constructor(private patientStore: PatientStore, private router: Router, private route: ActivatedRoute, private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer) {
+    constructor(public patientStore: PatientStore, private router: Router, private route: ActivatedRoute, private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer) {
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));
         mdIconRegistry.addSvgIcon('F', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-female.svg'));
+        mdIconRegistry.addSvgIcon('account-card-details',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-card-details.svg'));
+        mdIconRegistry.addSvgIcon('clipboard-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/clipboard-account.svg'));
+        mdIconRegistry.addSvgIcon('comment-account',  sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/comment-account.svg'));
+        mdIconRegistry.addSvgIcon('file-account', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/file-account.svg'));
     }
    
     ngOnInit() {
@@ -78,7 +89,7 @@ export class PatientDetailComponent {
         
     }
 
-    private navigateTo(page: string) {
+    public navigateTo(page: string) {
         
         if (page == 'treatments') {
             this.router.navigate(['/patients', this.patientID, this.owner, page] );

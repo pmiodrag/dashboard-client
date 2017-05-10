@@ -101,13 +101,14 @@ export class PatientListComponent {
 //    count: number;
 //     collection = [];
     private _patients: Rx.BehaviorSubject<List<Patient>> = new Rx.BehaviorSubject(List([]));
-    constructor(private router: Router, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private patientService: PatientBackendService, private notificationService: NotificationService, private patientStore: PatientStore) {
+    constructor(private router: Router, mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, private notificationService: NotificationService, public patientStore: PatientStore) {
 //        this.refreshPatients();
 //        this.collapse();
 //        patientStore.loadInitialData();
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));
         mdIconRegistry.addSvgIcon('F', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-female.svg'));
         mdIconRegistry.addSvgIcon('account-remove', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/account-remove.svg'));
+        console.log("PatientListComponent patientStore", patientStore);
 //         for (let i = 1; i <= 100; i++) {
 //            this.collection.push(`item ${i}`);
 //        }
