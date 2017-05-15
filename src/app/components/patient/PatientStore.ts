@@ -27,9 +27,7 @@ export class PatientStore {
     constructor(private patientBackendService: PatientBackendService) {
         this.id= PatientStore.counter++;
          console.log("PatientStore constructor this.id", this.id);
-//         console.log("PatientStore constructor this._patients.getValue()", this._patients.getValue());
           if(this._patients != null && this._patients.getValue().size != 0) {
-//        console.log("PatientStore constructor");
          } else {
          console.log("PatientStore constructor loadInitialData");
              this.loadInitialData();
@@ -81,7 +79,7 @@ export class PatientStore {
         console.log("this._selected111",  this._selected.getValue());
         console.log("this._patients getPatient()  _selected value",  this._patients.getValue(), "id", id);
         if(this._patients != null && this._patients.getValue().size != 0) {
-             this._selected.next(<Patient>this._patients.getValue().find(x => x.id == id));
+            this._selected.next(<Patient>this._patients.getValue().find(x => x.id == id));
             console.log("this._selected 2222",  this._selected.getValue());
         } else {
             this.getPatientById (id) ;

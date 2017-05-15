@@ -65,7 +65,6 @@ export class DoctorDetailComponent {
     */
     private doctorID: number;
     animationState: string;
-    private doctorList: Doctor[];
     doctor: Doctor;
     public doctorFormPage = DoctorFormPage;
     iconClass: string = ICON_CLASS; 
@@ -73,8 +72,6 @@ export class DoctorDetailComponent {
     owner: string = DOCTOR_OWNER;
     title: string;
     toggleID: number;
-
-    private _doctors: Rx.BehaviorSubject<Doctor> = new Rx.BehaviorSubject(null);
     constructor(private route: ActivatedRoute, private router: Router, private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer, public doctorStore: DoctorStore) {
         mdIconRegistry.addSvgIcon('M', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-male.svg'));
         mdIconRegistry.addSvgIcon('F', sanitizer.bypassSecurityTrustResourceUrl('assets/images/svg/human-female.svg'));

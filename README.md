@@ -1,6 +1,6 @@
-# Dash
+# Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0-beta.0.
 
 ## Development server
 

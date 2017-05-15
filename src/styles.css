@@ -4,3 +4,9 @@ indigo-pink.css
 pink-bluegrey.css
 purple-green.css*/
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'assets/styles/app.css';
+@import 'assets/styles/card.css';
+@import 'assets/styles/colors.css';
+@import 'assets/styles/rdash.css';
+@import 'assets/styles/animation.css';
+@import 'assets/styles/styles.css';

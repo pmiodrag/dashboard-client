@@ -1,10 +1,10 @@
-import { DashPage } from './app.po';
+import { DashboardPage } from './app.po';
 
-describe('dash App', () => {
-  let page: DashPage;
+describe('dashboard App', () => {
+  let page: DashboardPage;
 
   beforeEach(() => {
-    page = new DashPage();
+    page = new DashboardPage();
   });
 
   it('should display message saying app works', () => {
